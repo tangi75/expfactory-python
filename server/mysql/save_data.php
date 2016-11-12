@@ -11,16 +11,16 @@ include('database_connect.php'); # TODO : this is where you should define your d
 function mysql_insert($table, $inserts) {
     $values = array_map('mysql_real_escape_string', array_values($inserts));
     $keys = array_keys($inserts);
-	$sql_query = 'INSERT INTO `'.$table.'` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')';
-	//var_dump($sql_query);
-	
+    $sql_query = 'INSERT INTO `'.$table.'` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')';
+    //var_dump($sql_query);
+    
     return mysql_query($sql_query);
 }
 
 $to_insert = array();
 
 if (!$to_insert['json']) {
-	die('No data to insert!');
+    die('No data to insert!');
 }
 
 // Get the data object from json
@@ -32,7 +32,7 @@ $opt_data_names = array_keys($opt_data);
 
 // Add any optional, static parameters that got passed in (like subject id, experiment or condition)
 for($j=0;$j<count($opt_data_names);$j++){
-	$to_insert[$opt_data_names[$j]] = $opt_data[$opt_data_names[$j]];
+    $to_insert[$opt_data_names[$j]] = $opt_data[$opt_data_names[$j]];
 }
 
 $result = mysql_insert($data_table, $to_insert);
