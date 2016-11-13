@@ -30,7 +30,7 @@ try:
     Handler = http.server.SimpleHTTPRequestHandler
     httpd = socketserver.TCPServer(("", port), Handler)
     print("Preview experiment at localhost:%s" %port)
-    webbrowser.open("http://localhost:%s" %(port))
+    #webbrowser.open("http://localhost:%s" %(port))
     httpd.serve_forever()
 except:
     print("Stopping web server...")
