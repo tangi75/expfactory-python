@@ -13,7 +13,7 @@
       		cache: false,
       		url: post_url,
       		data: {
-      			json: data,
+      			json: JSON.stringify(data),
       			opt_data: { subject: subject_id, experiment: experiment }
       		},
       		success: function(output) { /* console.log(output); */ } // write the result to javascript console

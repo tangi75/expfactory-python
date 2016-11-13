@@ -13,18 +13,18 @@ function mysql_insert($table, $inserts) {
     $keys = array_keys($inserts);
     $sql_query = 'INSERT INTO `'.$table.'` (`'.implode('`,`', $keys).'`) VALUES (\''.implode('\',\'', $values).'\')';
     //var_dump($sql_query);
-    
+
     return mysql_query($sql_query);
 }
 
 $to_insert = array();
 
+// Get the data object from json
+$to_insert['json'] = $_POST['json'];
+
 if (!$to_insert['json']) {
     die('No data to insert!');
 }
-
-// Get the data object from json
-$to_insert['json'] = $_POST['json'];
 
 // get the optional data
 $opt_data = $_POST['opt_data'];
